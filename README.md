@@ -10,5 +10,5 @@ Fall 2014
 Mondays 7:00 - 9:40PM  
 Arnhold Hall 55 W. 13th 908  
 
-See [http://miniatureape.github.io/js-fall-2014/](http://miniatureape.github.io/js-fall-2014/) for more information.
+See [https://github.com/miniatureape/js-fall-2014/blob/master/syllabus.md](https://github.com/miniatureape/js-fall-2014/blob/master/syllabus.md) for more information.
 
