@@ -415,19 +415,23 @@ h1 {
 </section>
   </div>
   <div class="slide hidden" id="slide-2">
-    <section class="slide-content"><p>All examples in class will assume you&#39;re using Chrome unless otherwise specified.</p>
+    <section class="slide-content"><p>What is Programming? What is Javascript?</p>
 </section>
   </div>
   <div class="slide hidden" id="slide-3">
+    <section class="slide-content"><p>All examples in class will assume you&#39;re using Chrome unless otherwise specified.</p>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-4">
     <section class="slide-content"><h1 id="developer-tools">Developer Tools</h1>
 <p>(right click and choose &#39;inspect element&#39;)</p>
 </section>
   </div>
-  <div class="slide hidden" id="slide-4">
+  <div class="slide hidden" id="slide-5">
     <section class="slide-content"><h1 id="http-and-the-browser">HTTP and the Browser</h1>
 </section>
   </div>
-  <div class="slide hidden" id="slide-5">
+  <div class="slide hidden" id="slide-6">
     <section class="slide-content"><p>Running javascript.</p>
 <pre><code class="lang-javascript">&lt;p&gt;Hello World&lt;/p&gt;
 &lt;script&gt;
@@ -438,7 +442,7 @@ h1 {
 &lt;script src="my-script.js"&gt;&lt;/script&gt;</code></pre>
 </section>
   </div>
-  <div class="slide hidden" id="slide-6">
+  <div class="slide hidden" id="slide-7">
     <section class="slide-content"><h1 id="comments">Comments</h1>
 <pre><code class="lang-javascript"><span class="comment">// Inline Comment</span>
 
@@ -446,11 +450,11 @@ h1 {
    comment */</span></code></pre>
 </section>
   </div>
-  <div class="slide hidden" id="slide-7">
+  <div class="slide hidden" id="slide-8">
     <section class="slide-content"><h1 id="keywords-vs-built-ins-vs-user-names">Keywords vs. Built-Ins vs. User Names</h1>
 </section>
   </div>
-  <div class="slide hidden" id="slide-8">
+  <div class="slide hidden" id="slide-9">
     <section class="slide-content"><h1 id="variables">Variables</h1>
 <p>Think of them as names that point to data</p>
 <pre><code class="lang-javascript">
@@ -468,7 +472,7 @@ console.log(myOtherVariable);
 myOtherVariable = <span class="number">2</span>;</code></pre>
 </section>
   </div>
-  <div class="slide hidden" id="slide-9">
+  <div class="slide hidden" id="slide-10">
     <section class="slide-content"><h1 id="types-of-values">Types of Values</h1>
 <p>Numbers, Strings, Booleans</p>
 <pre><code class="lang-javascript"><span class="string">"A String"</span>
@@ -477,14 +481,14 @@ myOtherVariable = <span class="number">2</span>;</code></pre>
 <span class="literal">true</span></code></pre>
 </section>
   </div>
-  <div class="slide hidden" id="slide-10">
+  <div class="slide hidden" id="slide-11">
     <section class="slide-content"><h1 id="variables-can-hold-any-type">Variables can hold any Type</h1>
 <pre><code class="lang-javascript"><span class="keyword">var</span> name = <span class="string">"Dingbat"</span>;
 name = <span class="number">750</span>;
 name = <span class="literal">true</span>;</code></pre>
 </section>
   </div>
-  <div class="slide hidden" id="slide-11">
+  <div class="slide hidden" id="slide-12">
     <section class="slide-content"><h1 id="operators">Operators</h1>
 <p>Perform operations on data. Meaning is defined by the types they are operating on. </p>
 <pre><code class="lang-javascript">
@@ -499,7 +503,7 @@ name = <span class="literal">true</span>;</code></pre>
 <span class="string">"Whale"</span> - <span class="number">5</span>;</code></pre>
 </section>
   </div>
-  <div class="slide hidden" id="slide-12">
+  <div class="slide hidden" id="slide-13">
     <section class="slide-content"><h1 id="boolean-operators">Boolean Operators</h1>
 <p>Allow you to do complicated logic</p>
 <pre><code class="lang-javascript">
@@ -512,7 +516,7 @@ name = <span class="literal">true</span>;</code></pre>
 <span class="keyword">var</span> hasGraduated = !isStudent;</code></pre>
 </section>
   </div>
-  <div class="slide hidden" id="slide-13">
+  <div class="slide hidden" id="slide-14">
     <section class="slide-content"><h1 id="undefined-and-null">Undefined and Null</h1>
 <p>Special types. They mean: there is no data.</p>
 <pre><code class="lang-javascript"><span class="keyword">var</span> myVar; <span class="comment">// undefined</span>
@@ -521,7 +525,7 @@ name = <span class="literal">true</span>;</code></pre>
 <p>You can think of null as an explicit way of saying, I want this variable to have no value</p>
 </section>
   </div>
-  <div class="slide hidden" id="slide-14">
+  <div class="slide hidden" id="slide-15">
     <section class="slide-content"><h1 id="complex-data-types-arrays">Complex Data Types: Arrays</h1>
 <p>lists of things. Use &#39;[&#39; and &#39;]&#39; to make them.</p>
 <pre><code class="lang-javascript"><span class="keyword">var</span> plants = [<span class="string">'cactus'</span>, <span class="string">'aloe'</span>, <span class="string">'basil'</span>, <span class="string">'olive tree'</span>];
@@ -533,7 +537,7 @@ plants[<span class="number">0</span>]; <span class="comment">// 'cactus'</span>
 plants[<span class="number">1000</span>]; <span class="comment">// undefined</span></code></pre>
 </section>
   </div>
-  <div class="slide hidden" id="slide-15">
+  <div class="slide hidden" id="slide-16">
     <section class="slide-content"><h1 id="complex-data-types-objects">Complex Data Types: Objects</h1>
 <p>Collections of named data. </p>
 <pre><code class="lang-javascript"><span class="keyword">var</span> course = {
@@ -552,7 +556,7 @@ course[<span class="string">'students'</span>][<span class="number">0</span>] <s
 course.title <span class="comment">// 'Monday'</span></code></pre>
 </section>
   </div>
-  <div class="slide hidden" id="slide-16">
+  <div class="slide hidden" id="slide-17">
     <section class="slide-content"><p>Objects can be nested</p>
 <pre><code class="lang-javascript"><span class="keyword">var</span> courseLoad = {
 
@@ -571,7 +575,7 @@ course.title <span class="comment">// 'Monday'</span></code></pre>
 };</code></pre>
 </section>
   </div>
-  <div class="slide hidden" id="slide-17">
+  <div class="slide hidden" id="slide-18">
     <section class="slide-content"><pre><code class="lang-javascript">
 <span class="keyword">var</span> student = {};
 
@@ -580,7 +584,7 @@ student.average = <span class="number">2.7</span>;
 student.year = <span class="number">2017</span>;</code></pre>
 </section>
   </div>
-  <div class="slide hidden" id="slide-18">
+  <div class="slide hidden" id="slide-19">
     <section class="slide-content"><h1 id="methods-and-properties">Methods and Properties</h1>
 <p>Javascript types have various ways of getting data about the data they store or manipulating that data.</p>
 <pre><code class="lang-javascript">
@@ -589,7 +593,10 @@ console.log(sentence.length);
 
 sentence = sentence.replace(<span class="string">"Brown"</span>, <span class="string">"Pink"</span>);
 console.log(sentence);</code></pre>
-<h1 id="functions">Functions</h1>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-20">
+    <section class="slide-content"><h1 id="functions">Functions</h1>
 <p>You can wrap up several lines of code into reusable chunks called Functions. You can store them in variables. To use one, add () to the variable.</p>
 <pre><code class="lang-javascript">
 <span class="keyword">var</span> printFive = <span class="keyword">function</span>() {
@@ -600,7 +607,7 @@ printFive;
 printFive();</code></pre>
 </section>
   </div>
-  <div class="slide hidden" id="slide-19">
+  <div class="slide hidden" id="slide-21">
     <section class="slide-content"><h1 id="functions">Functions</h1>
 <p>Functions take arguments. They&#39;re variables created at function defintion and used within the function. </p>
 <pre><code class="lang-javascript">
@@ -617,7 +624,7 @@ printSquare(<span class="number">5</span>);
 printSum(<span class="number">4</span>, <span class="number">10</span>);</code></pre>
 </section>
   </div>
-  <div class="slide hidden" id="slide-20">
+  <div class="slide hidden" id="slide-22">
     <section class="slide-content"><h1 id="functions">Functions</h1>
 <p>Functions return values. You return something from a function by using the <strong>return</strong> keyword.</p>
 <pre><code class="lang-javascript"><span class="keyword">var</span> square = <span class="keyword">function</span>(num) {
@@ -629,7 +636,7 @@ printSum(<span class="number">4</span>, <span class="number">10</span>);</code><
 <span class="keyword">var</span> squareOfNine = square(<span class="number">9</span>);</code></pre>
 </section>
   </div>
-  <div class="slide hidden" id="slide-21">
+  <div class="slide hidden" id="slide-23">
     <section class="slide-content"><h1 id="functions">Functions</h1>
 <p>Functions can access variables outside of their brackets. We&#39;ll get into exactly how this works later.</p>
 <pre><code class="lang-javascript">
@@ -647,7 +654,7 @@ square(<span class="number">1</span>);
 console.log(counter);</code></pre>
 </section>
   </div>
-  <div class="slide hidden" id="slide-22">
+  <div class="slide hidden" id="slide-24">
     <section class="slide-content"><div class="author">
   <h1 class="name">Justin Donato</h1>
     <h3 class="twitter">
