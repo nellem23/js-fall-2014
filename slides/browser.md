@@ -4,7 +4,7 @@ author:
   twitter: justindo
   url: http://justindonato.com
 controls: false
-theme: matmuchrapna/cleaver-ribbon
+theme: miniatureape/cleaver-theme
 
 --
 
