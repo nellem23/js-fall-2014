@@ -1,0 +1,51 @@
+<style>
+
+    .bold {
+        background: blue;
+    }
+
+    .orange {
+        background: orange;
+        color: white;
+    }
+
+    div {
+        width: 100px;
+        height: 100px;
+        border: 1px solid black;
+        margin: 10px 10px;
+    }
+
+</style>
+<div class="bold">
+    I'm a Div
+</div>
+<div id="box">
+    I'm a Div with ID box
+</div>
+<div class="orange">
+    I'm a Div
+</div>
+<div class="orange">
+    I'm a Div
+</div>
+
+<ul id="list">
+    <li>Item One<li>
+    <li>Item Two<li>
+    <li class="orange">Item Two<li>
+</ul>
+
+<img src="http://4.bp.blogspot.com/-u0mfzoc6tDo/T5l63sAUsBI/AAAAAAAACEE/k_FHUH0WZD0/s1600/Wombat-8.jpg" />
+
+<script>
+
+    var myBox = document.getElementById('box');
+    var myBoxes = document.getElementsByTagName('div');
+    var myOrangeBoxes = document.querySelectorAll('.orange');
+
+    console.log(myBox);
+    console.log(myBoxes);
+    console.log(myOrangeBoxes);
+
+</script>

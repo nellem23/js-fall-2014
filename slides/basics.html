@@ -1,0 +1,822 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <title>Javascript Basics</title>
+  <style type="text/css">
+    body {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  color: #222;
+  background-color: #f7f7f7;
+  font-size: 100%;
+}
+
+.slide {
+  position: absolute;
+  top: 0; bottom: 0;
+  left: 0; right: 0;
+}
+
+.slide-content {
+  width: 800px;
+  height: 600px;
+  overflow: hidden;
+  margin: 80px auto 0 auto;
+  padding: 30px;
+
+  font-weight: 200;
+  font-size: 200%;
+  line-height: 1.375;
+}
+
+.controls {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+}
+
+.arrow {
+  width: 0; height: 0;
+  border: 30px solid #333;
+  float: left;
+  margin-right: 30px;
+
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.prev {
+  border-top-color: transparent;
+  border-bottom-color: transparent;
+  border-left-color: transparent;
+
+  border-left-width: 0;
+  border-right-width: 50px;
+}
+
+.next {
+  border-top-color: transparent;
+  border-bottom-color: transparent;
+  border-right-color: transparent;
+
+  border-left-width: 50px;
+  border-right-width: 0;
+}
+
+.prev:hover {
+  border-right-color: #888;
+  cursor: pointer;
+}
+
+.next:hover {
+  border-left-color: #888;
+  cursor: pointer;
+}
+
+h1 {
+  font-size: 300%;
+  line-height: 1.2;
+  text-align: center;
+  margin: 170px 0 0;
+}
+
+h2 {
+  font-size: 100%;
+  line-height: 1.2;
+  margin: 5px 0;
+  text-align: center;
+  font-weight: 200;
+}
+
+h3 {
+  font-size: 140%;
+  line-height: 1.2;
+  border-bottom: 1px solid #aaa;
+  margin: 0;
+  padding-bottom: 15px;
+}
+
+ul {
+  padding: 20px 0 0 60px;
+  font-weight: 200;
+  line-height: 1.375;
+}
+
+.author h1 {
+  font-size: 170%;
+  font-weight: 200;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.author h3 {
+  font-weight: 100;
+  text-align: center;
+  font-size: 95%;
+  border: none;
+}
+
+a {
+  text-decoration: none;
+  color: #44a4dd;
+}
+
+a:hover {
+  color: #66b5ff;
+}
+
+pre {
+  font-size: 60%;
+  line-height: 1.3;
+}
+
+.progress {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+}
+
+.progress-bar {
+  width: 0%;
+  height: 3px;
+  background-color: #b4b4b4;
+
+  -webkit-transition: width 0.05s ease-out;
+  -moz-transition: width 0.05s ease-out;
+  -o-transition: width 0.05s ease-out;
+  transition: width 0.05s ease-out;
+}
+
+.hidden {
+  display: none;
+}
+
+@media (max-width: 850px) {
+
+  body {
+    font-size: 70%;
+  }
+
+  .slide-content {
+    width: auto;
+  }
+
+  img {
+    width: 100%;
+  }
+
+  h1 {
+    margin-top: 120px;
+  }
+
+  .prev, .prev:hover {
+    border-right-color: rgba(135, 135, 135, 0.5);
+  }
+
+  .next, .next:hover {
+    border-left-color: rgba(135, 135, 135, 0.5);
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    font-size: 50%;
+    overflow: hidden;
+  }
+
+  .slide-content {
+    padding: 10px;
+    margin-top: 10px;
+    height: 340px;
+  }
+
+  h1 {
+    margin-top: 50px;
+  }
+
+  ul {
+    padding-left: 25px;
+  }
+}
+
+@media print {
+  * {
+    -webkit-print-color-adjust: exact;
+  }
+
+  @page {
+    size: letter;
+  }
+
+  .hidden {
+    display: inline;
+  }
+
+  html {
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+  }
+
+  body {
+    margin: 0 auto !important;
+    border: 0;
+    padding: 0;
+    float: none !important;
+    overflow: visible;
+    background: none !important;
+    font-size: 52%;
+  }
+
+  .progress, .controls {
+    display: none;
+  }
+
+  .slide {
+    position: static;
+  }
+
+  .slide-content {
+    border: 1px solid #222;
+    margin-top: 0;
+    margin-bottom: 40px;
+    height: 3.5in;
+    overflow: visible;
+  }
+
+  .slide:nth-child(even) {
+    /* 2 slides per page */
+    page-break-before: always;
+  }
+}
+
+/*
+github.com style (c) Vasily Polovnyov <vast@whiteants.net>
+*/
+
+code, pre {
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  overflow: auto;
+  padding: 6px 10px;
+}
+
+code {
+  padding: 0 5px;
+}
+
+pre>code {
+  margin: 0; padding: 0;
+  border: none;
+  background: transparent;
+}
+
+pre .comment,
+pre .template_comment,
+pre .diff .header,
+pre .javadoc {
+  color: #998;
+  font-style: italic
+}
+
+pre .keyword,
+pre .css .rule .keyword,
+pre .winutils,
+pre .javascript .title,
+pre .nginx .title,
+pre .subst,
+pre .request,
+pre .status {
+  color: #333;
+  font-weight: bold
+}
+
+pre .number,
+pre .hexcolor,
+pre .ruby .constant {
+  color: #099;
+}
+
+pre .string,
+pre .tag .value,
+pre .phpdoc,
+pre .tex .formula {
+  color: #d14
+}
+
+pre .title,
+pre .id {
+  color: #900;
+  font-weight: bold
+}
+
+pre .javascript .title,
+pre .lisp .title,
+pre .clojure .title,
+pre .subst {
+  font-weight: normal
+}
+
+pre .class .title,
+pre .haskell .type,
+pre .vhdl .literal,
+pre .tex .command {
+  color: #458;
+  font-weight: bold
+}
+
+pre .tag,
+pre .tag .title,
+pre .rules .property,
+pre .django .tag .keyword {
+  color: #000080;
+  font-weight: normal
+}
+
+pre .attribute,
+pre .variable,
+pre .lisp .body {
+  color: #008080
+}
+
+pre .regexp {
+  color: #009926
+}
+
+pre .class {
+  color: #458;
+  font-weight: bold
+}
+
+pre .symbol,
+pre .ruby .symbol .string,
+pre .lisp .keyword,
+pre .tex .special,
+pre .prompt {
+  color: #990073
+}
+
+pre .built_in,
+pre .lisp .title,
+pre .clojure .built_in {
+  color: #0086b3
+}
+
+pre .preprocessor,
+pre .pi,
+pre .doctype,
+pre .shebang,
+pre .cdata {
+  color: #999;
+  font-weight: bold
+}
+
+pre .deletion {
+  background: #fdd
+}
+
+pre .addition {
+  background: #dfd
+}
+
+pre .diff .change {
+  background: #0086b3
+}
+
+pre .chunk {
+  color: #aaa
+}
+
+.slide-content {
+    height: auto;
+    overflow: auto;
+    margin: 0 auto;
+}
+
+h1 {
+    margin: 0;
+    font-size: 100%;
+}
+
+  </style>
+</head>
+<body>
+    <div class="progress">
+    <div class="progress-bar"></div>
+  </div>
+
+  <div class="slide" id="slide-1">
+    <section class="slide-content"><h1 id="javascript-basics">Javascript Basics</h1>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-2">
+    <section class="slide-content"><p>What is Programming? What is Javascript?</p>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-3">
+    <section class="slide-content"><p>All examples in class will assume you&#39;re using Chrome unless otherwise specified.</p>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-4">
+    <section class="slide-content"><h1 id="developer-tools">Developer Tools</h1>
+<p>(right click and choose &#39;inspect element&#39;)</p>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-5">
+    <section class="slide-content"><h1 id="http-and-the-browser">HTTP and the Browser</h1>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-6">
+    <section class="slide-content"><p>Running javascript.</p>
+<pre><code class="lang-javascript">&lt;p&gt;Hello World&lt;/p&gt;
+&lt;script&gt;
+    console.log('Hello World');
+&lt;/script&gt;</code></pre>
+<p>or</p>
+<pre><code class="lang-javascript">&lt;p&gt;Hello World&lt;/p&gt;
+&lt;script src="my-script.js"&gt;&lt;/script&gt;</code></pre>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-7">
+    <section class="slide-content"><h1 id="comments">Comments</h1>
+<pre><code class="lang-javascript"><span class="comment">// Inline Comment</span>
+
+<span class="comment">/* Multiline
+   comment */</span></code></pre>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-8">
+    <section class="slide-content"><h1 id="keywords-vs-built-ins-vs-user-names">Keywords vs. Built-Ins vs. User Names</h1>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-9">
+    <section class="slide-content"><h1 id="variables">Variables</h1>
+<p>Think of them as names that point to data</p>
+<pre><code class="lang-javascript">
+<span class="comment">// Create a variable with a name</span>
+<span class="keyword">var</span> myVariable; <span class="comment">// Notice the semi-colon.</span>
+
+<span class="comment">// Create a variable and initialize it with a value</span>
+<span class="keyword">var</span> myOtherVariable = <span class="number">1</span>;
+
+<span class="comment">// Use a variable</span>
+
+console.log(myOtherVariable);
+
+<span class="comment">// Change a variable's value</span>
+myOtherVariable = <span class="number">2</span>;</code></pre>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-10">
+    <section class="slide-content"><h1 id="types-of-values">Types of Values</h1>
+<p>Numbers, Strings, Booleans</p>
+<pre><code class="lang-javascript"><span class="string">"A String"</span>
+<span class="number">100</span>
+<span class="number">1.2</span>
+<span class="literal">true</span></code></pre>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-11">
+    <section class="slide-content"><h1 id="variables-can-hold-any-type">Variables can hold any Type</h1>
+<pre><code class="lang-javascript"><span class="keyword">var</span> name = <span class="string">"Dingbat"</span>;
+name = <span class="number">750</span>;
+name = <span class="literal">true</span>;</code></pre>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-12">
+    <section class="slide-content"><h1 id="operators">Operators</h1>
+<p>Perform operations on data. Meaning is defined by the types they are operating on. </p>
+<pre><code class="lang-javascript">
+<span class="comment">// What do these do?</span>
+
+<span class="number">5</span> + <span class="number">4</span>;
+
+<span class="string">"Humpback "</span> + <span class="string">"Whale"</span>;
+
+<span class="number">5</span> + <span class="string">"Whale"</span>;
+
+<span class="string">"Whale"</span> - <span class="number">5</span>;</code></pre>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-13">
+    <section class="slide-content"><h1 id="boolean-operators">Boolean Operators</h1>
+<p>Allow you to do complicated logic</p>
+<pre><code class="lang-javascript">
+<span class="keyword">var</span> isStudent = <span class="literal">true</span>;
+<span class="keyword">var</span> isEmployee = <span class="literal">true</span>;
+
+<span class="keyword">var</span> isSortOfTired = isStudent || isEmployee;
+<span class="keyword">var</span> isReallyTired = isStudent &amp;&amp; isEmployee;
+
+<span class="keyword">var</span> hasGraduated = !isStudent;</code></pre>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-14">
+    <section class="slide-content"><h1 id="undefined-and-null">Undefined and Null</h1>
+<p>Special types. They mean: there is no data.</p>
+<pre><code class="lang-javascript"><span class="keyword">var</span> myVar; <span class="comment">// undefined</span>
+<span class="keyword">var</span> myOtherVar = <span class="literal">undefined</span>; <span class="comment">// undefined is also a keyword.</span>
+<span class="keyword">var</span> nothing = <span class="literal">null</span>;</code></pre>
+<p>You can think of null as an explicit way of saying, I want this variable to have no value</p>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-15">
+    <section class="slide-content"><h1 id="complex-data-types-arrays">Complex Data Types: Arrays</h1>
+<p>lists of things. Use &#39;[&#39; and &#39;]&#39; to make them.</p>
+<pre><code class="lang-javascript"><span class="keyword">var</span> plants = [<span class="string">'cactus'</span>, <span class="string">'aloe'</span>, <span class="string">'basil'</span>, <span class="string">'olive tree'</span>];
+<span class="keyword">var</span> weirdList = [<span class="string">'rocking chair'</span>, <span class="number">14</span>, <span class="literal">true</span>, <span class="number">5</span> - <span class="number">2</span>];
+
+<span class="comment">// access items using numeric indices:</span>
+
+plants[<span class="number">0</span>]; <span class="comment">// 'cactus'</span>
+plants[<span class="number">1000</span>]; <span class="comment">// undefined</span></code></pre>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-16">
+    <section class="slide-content"><h1 id="complex-data-types-objects">Complex Data Types: Objects</h1>
+<p>Collections of named data. </p>
+<pre><code class="lang-javascript"><span class="keyword">var</span> course = {
+    title: <span class="string">'javascript'</span>,
+    day: <span class="string">'Monday'</span>,
+    students: [<span class="string">'Jane'</span>, <span class="string">'Bob'</span>, <span class="string">'Jung'</span>]
+};
+
+<span class="comment">// access data using names</span>
+
+course[<span class="string">'title'</span>]; <span class="comment">// 'javascript'</span>
+course[<span class="string">'students'</span>] <span class="comment">// ['Jane', 'Bob', 'Jung]</span>
+course[<span class="string">'students'</span>][<span class="number">0</span>] <span class="comment">// 'Jane'</span>
+
+<span class="comment">// or you can use 'dot' syntax</span>
+course.title <span class="comment">// 'Monday'</span></code></pre>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-17">
+    <section class="slide-content"><p>Objects can be nested</p>
+<pre><code class="lang-javascript"><span class="keyword">var</span> courseLoad = {
+
+    <span class="string">'javascript'</span> : {
+        title: <span class="string">'javascript'</span>,
+        day: <span class="string">'Monday'</span>,
+        students: [<span class="string">'Jane'</span>, <span class="string">'Bob'</span>, <span class="string">'Jung'</span>]
+    },
+
+    <span class="string">'printmaking'</span> : {
+        title: <span class="string">'printmaking 101'</span>,
+        day: <span class="string">'Tuesday'</span>,
+        students: [<span class="string">'Jane'</span>, <span class="string">'Tina'</span>, <span class="string">'Emmet'</span>]
+    }
+
+};</code></pre>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-18">
+    <section class="slide-content"><pre><code class="lang-javascript">
+<span class="keyword">var</span> student = {};
+
+student.name = <span class="string">'Jim'</span>;
+student.average = <span class="number">2.7</span>;
+student.year = <span class="number">2017</span>;</code></pre>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-19">
+    <section class="slide-content"><h1 id="methods-and-properties">Methods and Properties</h1>
+<p>Javascript types have various ways of getting data about the data they store or manipulating that data.</p>
+<pre><code class="lang-javascript">
+<span class="keyword">var</span> sentence = <span class="string">"The Quick Brown Fox Jumped Over The Lazy Dog"</span>;
+console.log(sentence.length);
+
+sentence = sentence.replace(<span class="string">"Brown"</span>, <span class="string">"Pink"</span>);
+console.log(sentence);</code></pre>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-20">
+    <section class="slide-content"><h1 id="functions">Functions</h1>
+<p>You can wrap up several lines of code into reusable chunks called Functions. You can store them in variables. To use one, add () to the variable.</p>
+<pre><code class="lang-javascript">
+<span class="keyword">var</span> printFive = <span class="keyword">function</span>() {
+    console.log(<span class="number">5</span>);
+}
+
+printFive;
+printFive();</code></pre>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-21">
+    <section class="slide-content"><h1 id="functions">Functions</h1>
+<p>Functions take arguments. They&#39;re variables created at function defintion and used within the function. </p>
+<pre><code class="lang-javascript">
+<span class="keyword">var</span> printSquare = <span class="keyword">function</span>(num) {
+    console.log(num * num);
+}
+
+printSquare(<span class="number">5</span>);
+
+<span class="keyword">var</span> printSum = <span class="keyword">function</span>(num1, num2) {
+    console.log(num1 + num2);
+}
+
+printSum(<span class="number">4</span>, <span class="number">10</span>);</code></pre>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-22">
+    <section class="slide-content"><h1 id="functions">Functions</h1>
+<p>Functions return values. You return something from a function by using the <strong>return</strong> keyword.</p>
+<pre><code class="lang-javascript"><span class="keyword">var</span> square = <span class="keyword">function</span>(num) {
+    <span class="keyword">return</span> num * num;
+}
+
+
+<span class="keyword">var</span> squareOfFour = square(<span class="number">4</span>);
+<span class="keyword">var</span> squareOfNine = square(<span class="number">9</span>);</code></pre>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-23">
+    <section class="slide-content"><h1 id="functions">Functions</h1>
+<p>Functions can access variables outside of their brackets. We&#39;ll get into exactly how this works later.</p>
+<pre><code class="lang-javascript">
+<span class="keyword">var</span> counter = <span class="number">0</span>;
+
+<span class="keyword">var</span> squareAndCount = <span class="keyword">function</span>(num) {
+    counter = counter + <span class="number">1</span>
+    <span class="keyword">return</span> num * num;
+}
+
+square(<span class="number">9</span>);
+square(<span class="number">11</span>);
+square(<span class="number">1</span>);
+
+console.log(counter);</code></pre>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-24">
+    <section class="slide-content"><div class="author">
+  <h1 class="name">Justin Donato</h1>
+    <h3 class="twitter">
+      <a href="http://twitter.com/@justindo">@justindo</a>
+    </h3>
+    <h3 class="url">
+      <a href="http://justindonato.com">http://justindonato.com</a>
+    </h3>
+</div>
+</section>
+  </div>
+
+
+
+  <script type="text/javascript">
+    /**
+ * Returns the current page number of the presentation.
+ */
+function currentPosition() {
+  return parseInt(document.querySelector('.slide:not(.hidden)').id.slice(6));
+}
+
+
+/**
+ * Navigates forward n pages
+ * If n is negative, we will navigate in reverse
+ */
+function navigate(n) {
+  var position = currentPosition();
+  var numSlides = document.getElementsByClassName('slide').length;
+
+  /* Positions are 1-indexed, so we need to add and subtract 1 */
+  var nextPosition = (position - 1 + n) % numSlides + 1;
+
+  /* Normalize nextPosition in-case of a negative modulo result */
+  nextPosition = (nextPosition - 1 + numSlides) % numSlides + 1;
+
+  document.getElementById('slide-' + position).classList.add('hidden');
+  document.getElementById('slide-' + nextPosition).classList.remove('hidden');
+
+  updateProgress();
+  updateURL();
+  updateTabIndex();
+}
+
+
+/**
+ * Updates the current URL to include a hashtag of the current page number.
+ */
+function updateURL() {
+  window.history.replaceState({} , null, '#' + currentPosition());
+}
+
+
+/**
+ * Sets the progress indicator.
+ */
+function updateProgress() {
+  var progressBar = document.querySelector('.progress-bar');
+
+  if (progressBar !== null) {
+    var numSlides = document.getElementsByClassName('slide').length;
+    var position = currentPosition() - 1;
+    var percent = (numSlides === 1) ? 100 : 100 * position / (numSlides - 1);
+    progressBar.style.width = percent.toString() + '%';
+  }
+}
+
+
+/**
+ * Removes tabindex property from all links on the current slide, sets
+ * tabindex = -1 for all links on other slides. Prevents slides from appearing
+ * out of control.
+ */
+function updateTabIndex() {
+  var allLinks = document.querySelectorAll('.slide a');
+  var position = currentPosition();
+  var currentPageLinks = document.getElementById('slide-' + position).querySelectorAll('a');
+  var i;
+
+  for (i = 0; i < allLinks.length; i++) {
+    allLinks[i].setAttribute('tabindex', -1);
+  }
+
+  for (i = 0; i < currentPageLinks.length; i++) {
+    currentPageLinks[i].removeAttribute('tabindex');
+  }
+}
+
+/**
+ * Determines whether or not we are currently in full screen mode
+ */
+function isFullScreen() {
+  return document.fullscreenElement ||
+         document.mozFullScreenElement ||
+         document.webkitFullscreenElement ||
+         document.msFullscreenElement;
+}
+
+/**
+ * Toggle fullScreen mode on document element.
+ * Works on chrome (>= 15), firefox (>= 9), ie (>= 11), opera(>= 12.1), safari (>= 5).
+ */
+function toggleFullScreen() {
+  /* Convenient renames */
+  var docElem = document.documentElement;
+  var doc = document;
+
+  docElem.requestFullscreen =
+      docElem.requestFullscreen ||
+      docElem.msRequestFullscreen ||
+      docElem.mozRequestFullScreen ||
+      docElem.webkitRequestFullscreen.bind(docElem, Element.ALLOW_KEYBOARD_INPUT);
+
+  doc.exitFullscreen =
+      doc.exitFullscreen ||
+      doc.msExitFullscreen ||
+      doc.mozCancelFullScreen ||
+      doc.webkitExitFullscreen;
+
+  isFullScreen() ? doc.exitFullscreen() : docElem.requestFullscreen();
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+  // Update the tabindex to prevent weird slide transitioning
+  updateTabIndex();
+
+  // If the location hash specifies a page number, go to it.
+  var page = window.location.hash.slice(1);
+  if (page) {
+    navigate(parseInt(page) - 1);
+  }
+
+  document.onkeydown = function (e) {
+    var kc = e.keyCode;
+
+    // left, down, H, J, backspace, PgUp - BACK
+    // up, right, K, L, space, PgDn - FORWARD
+    // enter - FULLSCREEN
+    if (kc === 37 || kc === 40 || kc === 8 || kc === 72 || kc === 74 || kc === 33) {
+      navigate(-1);
+    } else if (kc === 38 || kc === 39 || kc === 32 || kc === 75 || kc === 76 || kc === 34) {
+      navigate(1);
+    } else if (kc === 13) {
+      toggleFullScreen();
+    }
+  };
+
+  if (document.querySelector('.next') && document.querySelector('.prev')) {
+    document.querySelector('.next').onclick = function (e) {
+      e.preventDefault();
+      navigate(1);
+    };
+
+    document.querySelector('.prev').onclick = function (e) {
+      e.preventDefault();
+      navigate(-1);
+    };
+  }
+});
+
+
+  </script>
+</body>
+</html>

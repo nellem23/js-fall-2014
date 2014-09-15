@@ -58,37 +58,37 @@ In addition, I strongly recommend that you check out the following websites, or 
 
 #### Course Outline (Tentative)
 
-__8/25__ - No Class (Instructor Away)
+__8/25__ - No Class (Instructor Away. Sorry)
 
 __9/1__ - No Class (Labor Day)
 
-__9/8__ - Intro / Javascript Basics
+__9/8__ - Intro / Javascript Basics (Exercise 1 Due)
 
-__9/15__ - Javascript in the browser
+__9/15__ - Javascript in the browser (Exercise 2 Due)
 
-__9/22__ - More Javascript Basics
+__9/22__ - More Javascript Basics (Exercise 3 Due, Midterm Assigned)
 
-__9/29__ - Ajax and Remote Data
+__9/29__ - Ajax and Remote Data (Exercise 4 Due, Midterm Description Due)
 
-__10/6__ - Persistence
+__10/6__ - Persistence (Exercise 5 Due)
 
-__10/13__ - Persistence
+__10/13__ - Persistence (Exercise 6 Due)
+ 
+__10/20__ - NodeJS 
 
-__10/20__ - NodeJS
+__10/27__ - NodeJS 
 
-__10/27__ - NodeJS - Project 1 Due
-
-__11/3__ - The Canvas Element
+__11/3__ - The Canvas Element (Mid Term Due, Final Assigned)
 
 __11/10__ - The Canvas Element
 
-__11/17__ - Sound and Video
+__11/17__ - Sound and Video 
 
 __11/24__ - Working with Maps
 
 __12/1__ - Overflow
 
-__12/8__ - Overflow - Final Project Due
+__12/8__ - Final Project Presentations (Final Project Due)
 
 
 #### Grading Standards
@@ -120,3 +120,6 @@ __Delays__– In rare instances, I may be delayed arriving to class due to my fu
 __Guidelines for Studio Assignments__ – Work from other visual sources may be imitated or incorporated into studio work if the fact of imitation or incorporation and the identity of the original source are properly acknowledged. There must be no intent to deceive; the work must make clear that it emulates or comments on the source as a source. Referencing a style or concept in otherwise original work does not constitute plagiarism. The originality of studio work that presents itself as “in the manner of” or as playing with “variations on” a particular source should be evaluated by the individual faculty member in the context of a critique.
 
 __Student Disability Services__ – In keeping with the University’s policy of providing equal access for students with disabilities, any student with a disability who needs academic accommodations is welcome to meet with me privately.  All conversations will be kept confidential.  Students requesting any accommodations will also need to meet with Jason Luchs in the office of Student Disability Services, who will conduct an intake, and if appropriate, provide an academic accommodation notification letter to you to bring to me.  At that point I will review the letter with you and discuss these accommodations in relation to this course.  Mr. Luchs’ office is located in 79 Fifth Avenue, 5th floor. His direct line is (212) 229-5626 x3135.  You may also access more information through the University’s web site at http://www.newschool.edu/studentservices/disability/.
+
+__Using Code You Didn't Write__ - All programmers use code they didn't write. I encourage you to seek out libraries to help you meet your needs. Please document all code snippets, libraries, blog posts you used in the production of your work. Code should be used, extended and changed, not just incorporated without change.
+
