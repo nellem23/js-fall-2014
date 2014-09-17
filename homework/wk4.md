@@ -14,5 +14,5 @@ To complete these exercises, use the wk3 homework template in your repo.
 
 Do one of the following:
 
-- Math.rand() gives you a random number from 0-1. Write a program that prompts the user for a number then loops a random number of times between 0 and the user's number. For instance, if the user enters 37, the program might log up to 15, 33, 11, but definitely not 38, 50 or 99.
+- Math.rand() gives you a random number from 0-1. Write a program that prompts the user for a number then loops a random number of times between 0 and the user's number printing . For instance, if the user enters 37, the program might log up to 15, 33, 11, but definitely not 38, 50 or 99.
 - Do the [FizzBuzz](http://eloquentjavascript.net/02_program_structure.html#p_i0Cvwf75cQ) problem from the reading.
