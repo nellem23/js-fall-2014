@@ -131,13 +131,15 @@ When you use a variable, Javascript will find the "nearest" one and use it. If i
 
 Allows you to see exactly what's happening in a program.
 
-Set in the Sources panel or from your code
+Set in the Sources panel or from your code.
 
 ```javascript
 
     debugger;
 
 ```
+
+[demo](miniatureape.github.io/js-fall-2014/slides/demos/basics/index.html)
 
 --
 
