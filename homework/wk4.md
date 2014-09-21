@@ -14,5 +14,5 @@ To complete these exercises, use the wk3 homework template in your repo.
 
 Do one of the following:
 
-- Math.rand() gives you a random number from 0-1. Write a program that prompts the user for a number then loops a random number of times between 0 and the user's number printing . For instance, if the user enters 37, the program might log up to 15, 33, 11, but definitely not 38, 50 or 99.
+- Math.rand() gives you a random number from 0-1. Write a program that prompts the user for a "max" number and then prompts the user for the number of times they would like a number generated. Using a for loop, print 'n' random numbers no higher than the user's max. For instance, if the user enters 37 as max, and wants 4 numbers, the program might log 15, 33, 11, 9. You definitely wouldn't find a number higher than 37, or any more numbers than 4. You can think of this as a lotto number generator that will work for any lotto.
 - Do the [FizzBuzz](http://eloquentjavascript.net/02_program_structure.html#p_i0Cvwf75cQ) problem from the reading.
