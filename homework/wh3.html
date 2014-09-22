@@ -30,7 +30,25 @@
         <div id="rect"></div>
 
         <script>
-            // Your work goes here.
+            var element = document.getElementById('rect');
+            element.classList.add('bordered');
+            element.style.backgroundColor = 'blue'; 
+
+        // element.classList.add('lefty'); 
+
+            var leftyClickHandler = function(e) {
+
+            if (e.currentTarget.classList.contains('  lefty')) {
+            e.currentTarget.classList.remove('lefty');
+             } else {
+            e.currentTarget.classList.add('lefty');
+            }
+
+            };
+            bordered.addEventListener('lefty', leftyClickHandler);
+              console.log('done');
+
+          // confused...
         </script>
 
     </body>
