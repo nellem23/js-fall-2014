@@ -23,7 +23,9 @@
         (function(){
 
             var getOpponentValue = function() {
-                return 'rock';
+                var choices = ['rock', 'paper', 'scissor'];
+                var choice = Math.round(Math.random() * 2)
+                return choices[choice];
             }
 
             var playerWins = function(playerC, oppC) {
@@ -37,6 +39,8 @@
                 var playerValue = playerSelect.value;
 
                 var opponentValue = getOpponentValue();
+                console.log(playerValue, opponentValue);
+
                 var playerWon = playerWins(playerValue, opponentValue);
 
                 if (playerWon) {
