@@ -6,19 +6,59 @@
 </head>
 <body>
 
-    <select>
-        <option>Rock</option>
-        <option>paper</option>
-        <option>scissor</option>
+    <form id="player-choice">
+
+    <select id="player-select">
+        <option value="rock">Rock</option>
+        <option value="paper">Paper</option>
+        <option value="scissor">Scissor</option>
     </select>
+
+    <input type="submit" />
+
+    </form>
 
     <script>
 
         (function(){
 
+            var getOpponentValue = function() {
+                return 'rock';
+            }
+
+            var playerWins = function(playerC, oppC) {
+                return true;
+            }
+
+            var changeHandler = function (e) {
+                e.preventDefault();
+
+                var playerSelect = document.getElementById('player-select');
+                var playerValue = playerSelect.value;
+
+                var opponentValue = getOpponentValue();
+                var playerWon = playerWins(playerValue, opponentValue);
+
+                if (playerWon) {
+                    alert('Congrats You Won');
+                } else {
+                    alert('Sorry');
+                }
+
+            };
+
+            var playerChoice = document.getElementById('player-choice');
+            playerChoice.addEventListener('submit', changeHandler);
+
             console.log('started');
 
         })()
+
+
+
+
+
+
 
     </script>
 
