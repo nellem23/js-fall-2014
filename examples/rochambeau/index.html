@@ -29,7 +29,25 @@
             }
 
             var playerWins = function(playerC, oppC) {
-                return true;
+                if (playerC === 'rock' && oppC === 'scissor') {
+                    return true;
+                } else if (playerC === 'rock' && oppC === 'paper') {
+                    return false;
+                } else if (playerC === 'rock' && oppC === 'rock') {
+                    return 'TIE';
+                } else if (playerC === 'paper' && oppC === 'rock') {
+                    return true;
+                } else if (playerC === 'paper' && oppC === 'scissor') {
+                    return false
+                } else if (playerC === 'paper' && oppC === 'paper') {
+                    return 'TIE'
+                } else if (playerC === 'scissor' && oppC === 'rock') {
+                    return false;
+                } else if (playerC === 'scissor' && oppC === 'scissor') {
+                    return 'TIE'
+                } else if (playerC === 'scissor' && oppC === 'paper') {
+                    return true;
+                }
             }
 
             var changeHandler = function (e) {
@@ -39,12 +57,13 @@
                 var playerValue = playerSelect.value;
 
                 var opponentValue = getOpponentValue();
-                console.log(playerValue, opponentValue);
 
                 var playerWon = playerWins(playerValue, opponentValue);
 
-                if (playerWon) {
-                    alert('Congrats You Won');
+                if (playerWon === 'TIE') {
+                    alert('You Tied');
+                } else if (playerWon) {
+                    alert('Congrats You Won opponent chose ' + opponentValue);
                 } else {
                     alert('Sorry');
                 }
