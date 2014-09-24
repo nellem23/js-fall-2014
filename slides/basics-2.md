@@ -139,7 +139,7 @@ Set in the Sources panel or from your code.
 
 ```
 
-[demo](miniatureape.github.io/js-fall-2014/slides/demos/basics/index.html)
+[demo](http://miniatureape.github.io/js-fall-2014/slides/demos/basics/index.html)
 
 --
 
