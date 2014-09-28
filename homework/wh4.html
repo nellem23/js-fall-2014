@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <meta charset="utf-8">
+      <title>Homework</title>
+      <style>
+
+        body{
+          background-color: #ffffff;
+        }
+
+          #rect {
+              position: relative;
+              top: 50px;
+              left: 50px;
+              width: 100px;
+              height: 100px;
+              background: #fee;
+              -webkit-transition: left .5s;
+          }
+
+          .bordered {
+              border: 2px solid #dcc;
+          }
+
+          #rect.lefty {
+              left: 200px;
+          }
+
+          #wrapper {width: 100%; height: 100%;}
+
+          .yes {
+            background-color: blue;
+          }
+
+          #wrapper.yes {color: blue;}
+
+          .no {
+            background-color: black;
+          }
+
+          #wrapper.yes {color:black;}
+
+      </style>
+    </head>
+    <body>
+        <div id="wrapper">
+        <div id="rect"></div>
+
+        <FORM action style="padding-left:20em;"="">
+
+        <INPUT TYPE="button" VALUE="click me"  
+         onClick="askuser()">
+       </div>
+        <script>
+           
+        // element.classList.add('lefty'); 
+
+            var leftyClickHandler = function(e) {
+
+            if (e.currentTarget.classList.contains('lefty')) {
+            e.currentTarget.classList.remove('lefty');
+             } else {
+            e.currentTarget.classList.add('lefty');
+            }
+
+            };
+
+            var r = document.getElementById('rect');
+            r.classList.add('bordered');
+
+            r.addEventListener('click', leftyClickHandler);
+              console.log('done');
+
+          // confused... */
+
+  var loop = 1;
+          while(loop <= 1000) {
+            console.log(loop);
+            loop = loop + 1;
+          }
+
+ var addColor = function (a){
+          var x = prompt("Do you wish it was still summer");
+          if (x === true) {
+            document.getElementById('body');
+              body.classList.add('yes');
+
+              body.addEventListener('click', a);
+              console.log(yes);
+          } 
+          else {
+           document.getElementById('body');
+              x.classList.add('no');
+
+              x.addEventListener('click', addColor);
+              console.log(no);
+           }
+         }
+
+
+ function askuser()
+  {
+   var answer="   "
+   var statement="Answer yes or no"
+   var answer=prompt("Do you like winter?")
+
+    var w = document.getElementById('wrapper');
+          
+            w.addEventListener('click', askuser);
+              console.log('done');
+
+
+   if ( answer == "yes")
+    {
+      document.getElementById('wrapper');
+              w.classList.remove('no');
+              w.classList.add('yes');
+              console.log("the answer is yes");
+
+    }
+   else 
+    {
+      document.getElementById('wrapper');
+              w.classList.remove('yes');
+              w.classList.add('no');
+              console.log("the answer is no");
+    }
+   
+    }
+
+
+//FizzBuzz program
+
+for (var i = 1; i <= 100; i++) {
+    if (i % 15 === 0) {
+        console.log('FizzBuzz');
+    } else if (i % 3 === 0) {
+        console.log('Fizz');
+    } else if (i % 5 === 0) {
+        console.log('Buzz');
+    } else {
+        console.log(i);
+    }
+}
+
+        </script>
+
+    </body>
+</html>
