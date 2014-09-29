@@ -20,7 +20,7 @@ Easiest way to store data in JS.
 
 ```javascript
 
-localStorage.setItem('age': 72);
+localStorage.setItem('age', 72);
 var age = localStorage.getItem('age');
 
 ```
