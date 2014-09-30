@@ -55,39 +55,87 @@
 
     (function() {
 
-       var addNewTodo = function() {
-           var todoList = $('#todolist');
-           var todoText = $('#new-item').val();
+       var getTodos = function() {
 
-           $('#new-item').val('');
+           var todosJSON = localStorage.getItem('todos');
 
-           var newItem = $("<li>" + todoText+ "<span class='delete'>x</span></li>");
-           todoList.append(newItem);
+           if (todosJSON) {
+               return JSON.parse(todosJSON);
+           }
+
+           return [];
+       }
+
+       var addNewTodo = function(todoText) {
+
+           var newTodo = {
+               text: todoText,
+               finished: false
+           };
+
+           todos.push(newTodo);
+
+           store();
+           refresh();
 
        }
 
+       var store = function() {
+           localStorage.setItem('todos', JSON.stringify(todos));
+       }
+
+       var refresh = function() {
+           $('#todolist').empty();
+
+           for (var i = 0; i < todos.length; i++) {
+               addDomItem(todos[i]);
+           }
+       }
+
+       var addDomItem = function(todo) {
+
+           var newLi = $("<li></li>");
+           newLi.text(todo.text);
+
+           if (todo.finished) {
+               newLi.addClass('deleted');
+           }
+
+           newLi.append($("<span class='delete'>x</span>"));
+
+           $('#todolist').append(newLi);
+
+       }
 
        $('#new-item').on('keypress', function(e) {
+
 
            // http://www.theasciicode.com.ar/
 
            if (e.which === 13) {
-               addNewTodo();
+
+               var todoText = $('#new-item').val();
+               addNewTodo(todoText);
            }
 
        });
 
        $('#todolist').on('click', 'li', function() {
-           console.log('hello');
-           $(this).addClass('deleted');
+
+           var clickedElem = $(this);
+           var index = $('#todolist li').index(clickedElem);
+
+           var todo = todos[index];
+           todo.finished = true;
+
+           store();
+           refresh();
+
        });
 
 
-
-
-
-
-
+       var todos = getTodos();
+       refresh();
 
 
     })()
