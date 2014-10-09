@@ -5,16 +5,21 @@
     <head>
         <meta charset="utf-8">
         <title>Instapaint</title>
+        <link href="styles.css" rel="stylesheet" />
     </head>
 
     <body>
-        <ul id="list"></ul>
         <div id="app">
+            <header>
+                <h1>Instapaint</h1>
+                <button class="toggle-upload">Upload</button>
+            </header>
             <form id="upload">
-                <input id="photo" type="file" accept="image/*" capture="camera" />
-                <input id="caption" type="text" placeholder="caption" />
-                <input type="submit" value="Upload" />
+                <div><input id="photo" type="file" accept="image/*" capture="camera" /></div>
+                <div><input id="caption" type="text" placeholder="caption" /></div>
+                <div><button class="upload-btn">Upload</button></div>
             </form>
+            <ul id="list" />
         </div>
     </body>
 

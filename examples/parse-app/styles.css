@@ -1,0 +1,54 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+#app {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 600px;
+}
+
+ul {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+}
+
+#list img {
+    width: 100%;
+    padding: 30px;
+    display: block;
+    margin: 0 auto;
+}
+
+#list p {
+    padding: 0 30px;
+}
+
+#upload {
+    display: none;
+    padding: 30px;
+}
+
+.upload-btn {
+    padding: 10px;
+    border: 2px solid;
+    color: #3498db;
+    background-color: white;
+    border-radius: 3px;
+}
+
+#caption {
+    width: 80%;
+    display: block;
+    padding: 5px;
+    border: 0;
+    border-bottom: 1px solid #3498db;
+    font-size: larger;
+    outline-width: 0;
+}
