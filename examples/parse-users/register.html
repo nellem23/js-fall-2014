@@ -22,6 +22,8 @@
         var password = registerForm.find('[name="password"]').val();
         var email = registerForm.find('[name="email"]').val();
 
+        debugger;
+
         var user = new Parse.User();
 
         user.set("username", username);
