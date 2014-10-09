@@ -36,6 +36,7 @@
 
         var query = new Parse.Query(Photo);
         query.equalTo('user', currentUser);
+        query.descending('createdAt');
 
         query.find({
             success: function(results) {
