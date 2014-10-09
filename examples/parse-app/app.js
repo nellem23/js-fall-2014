@@ -96,8 +96,17 @@
         });
     }
 
+    var showFormOnSelect = function() {
+        var realUpload = $('#photo');
+        var form = $('#upload');
+        realUpload.on('change', function(e) {
+            form.find('.caption-section').addClass('display');
+        });
+    }
+
     var initializeForm = function() {
         connectStyledUploadBtn();
+        showFormOnSelect();
         var form = $('#upload');
         form.on('submit', handleUploadSubmit);
     }

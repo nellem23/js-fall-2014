@@ -35,8 +35,17 @@ header h1 {
     padding: 30px;
 }
 
-#upload.display {
-    display: block;
+#upload div {
+    margin: 20px 0;
+}
+
+.display {
+    display: block !important; /* :) */
+}
+
+.caption-section {
+    display: none;
+    margin: 10px 0;
 }
 
 #photo {
@@ -51,10 +60,16 @@ header h1 {
     border-radius: 3px;
 }
 
+.btn.wide {
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+
 .upload-btn {}
 
 #caption {
-    width: 80%;
+    width: 100%;
     display: block;
     padding: 5px;
     border: 0;
