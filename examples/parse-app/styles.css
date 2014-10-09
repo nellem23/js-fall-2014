@@ -39,6 +39,10 @@ header h1 {
     display: block;
 }
 
+#photo {
+    display: none;
+}
+
 .btn {
     padding: 10px;
     border: 2px solid;

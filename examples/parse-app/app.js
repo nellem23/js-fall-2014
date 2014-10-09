@@ -84,7 +84,20 @@
         });
     }
 
+    var connectStyledUploadBtn = function () {
+        var styled = $('#styled-photo');
+        var realUpload = $('#photo');
+        styled.on('click', function() {
+            realUpload.trigger('click');
+        });
+        realUpload.on('change', function(e) {
+            var fileName = e.currentTarget.files[0].name;
+            styled.text(fileName);
+        });
+    }
+
     var initializeForm = function() {
+        connectStyledUploadBtn();
         var form = $('#upload');
         form.on('submit', handleUploadSubmit);
     }
