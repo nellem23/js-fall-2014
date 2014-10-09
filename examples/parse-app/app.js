@@ -69,8 +69,16 @@
                 }});
 
             });
+
+            closeForm();
         }
 
+    }
+
+    var closeForm = function() {
+        var form = $('#upload');
+        form.find('.display').removeClass('display');
+        form.removeClass('display');
     }
 
     var initializeMenu = function() {
