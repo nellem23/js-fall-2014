@@ -46,7 +46,6 @@
     }
 
     var handleUploadSubmit = function(e) {
-
         e.preventDefault();
 
         var fileUploadControl = $("#photo").get(0);
@@ -87,7 +86,8 @@
     var connectStyledUploadBtn = function () {
         var styled = $('#styled-photo');
         var realUpload = $('#photo');
-        styled.on('click', function() {
+        styled.on('click', function(e) {
+            e.preventDefault();
             realUpload.trigger('click');
         });
         realUpload.on('change', function(e) {
