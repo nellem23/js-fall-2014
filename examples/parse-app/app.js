@@ -74,6 +74,16 @@
 
     }
 
+    var initializeMenu = function() {
+
+        var toggleBtn = $('.toggle-upload');
+        var form = $('#upload');
+
+        toggleBtn.on('click', function() {
+            form.toggleClass('display');
+        });
+    }
+
     var initializeForm = function() {
         var form = $('#upload');
         form.on('submit', handleUploadSubmit);
@@ -81,6 +91,7 @@
 
     window.startApp = function() {
         // Allow user to upload a new photo.
+        initializeMenu();
         initializeForm();
 
         // Get users recent photos with caption and title
