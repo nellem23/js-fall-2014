@@ -70,13 +70,8 @@ Rather than keep long html templates in your code, put them in your HTML and ext
         </div>
     </script>
 
-    var itemTemplate = "<li>{{ todoText }}<span class='close'>x</span></li>";
+    var personTemplate = $('#person-tpl').html();
 
-    // render an html string by passing the function an object.
-    var itemHtml = Mustache.render(itemTemplate, {todoText: 'Buy Beer and Diapers.'});
-
-    // Stick in DOM using jquery
-    $('#list').html(itemHtml);
 ```
 
 --
@@ -85,4 +80,4 @@ Mustache lets you do rudimentary logic and loops.
 
 --
 
-(Example)[http://miniatureape.github.io/js-fall-2014/examples/mustache/index.html]
+[Example](http://miniatureape.github.io/js-fall-2014/examples/mustache/index.html)
