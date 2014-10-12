@@ -40,7 +40,7 @@ We can do this with a templating language.
 
 -- 
 
-(Mustache)[https://github.com/janl/mustache.js] is one of the simplest templating languages.
+[Mustache](https://github.com/janl/mustache.js) is one of the simplest templating languages.
 
 ---
 
