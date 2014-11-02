@@ -72,9 +72,9 @@ __9/29__ - Persistence (Exercise 4 Due, Midterm Description Due)
 
 __10/6__ - Persistence (Exercise 5 Due)
 
-__10/13__ - Ajax and Remote Data (Exercise 6 Due)
+__10/13__ - Ajax and Remote Data (No Homework Due)
 
-__10/20__ - NodeJS 
+__10/20__ - NodeJS  (Exercise 7 due. Midterm Check in!)
 
 __10/27__ - NodeJS 
 
