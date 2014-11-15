@@ -1,0 +1,41 @@
+<html>
+    <body>
+
+        <p>An Audio Element with built in controls</p>
+
+        <audio id="wave" src="wave.mp3" controls loop></audio>
+
+        <button rel="wave" id="start">Start</button>
+
+        <script>
+
+            var playAudio = function(e) {
+               var rel = e.currentTarget.getAttribute('rel');
+               console.log(rel);
+               var audio = document.getElementById(rel);
+               // Set time to beginning so we don't have to 
+               // wait for the sound to finish if its playing.
+               audio.currentTime = 0;
+               audio.play();
+            }
+
+            var btns = document.querySelectorAll('.play-note');
+            for (var i = 0; i < btns.length; i++) {
+                btns[i].addEventListener('click', playAudio);
+            }
+
+            var startBtn = document.getElementById('start');
+            startBtn.addEventListener('click', function(e) {
+               var rel = e.currentTarget.getAttribute('rel');
+               var audio = document.getElementById(rel);
+                audio.addEventListener('timeupdate', function() {
+                    audio.volume = Math.abs(Math.sin(audio.currentTime));
+                });
+                audio.currentTime = 0;
+                audio.play();
+            });
+
+        </script>
+
+    </body>
+</html>
