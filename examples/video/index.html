@@ -1,0 +1,41 @@
+<html>
+    <style>
+        video, canvas {
+            float: left;
+        }
+
+        canvas {
+            border: 1px solid black;
+        }
+
+        #container {
+            margin: 0 auto;
+            width: 620px;
+        }
+
+    </style>
+    <body>
+
+       <div id="container">
+           <video id="cartoon" src="cartoon.mp4" width=300 controls loop></video>
+           <canvas id="cartoon-canvas" width=300 height=233></canvas>
+       </div>
+
+
+        <script>
+
+            var ctx = document.getElementById('cartoon-canvas').getContext('2d');
+            var video = document.getElementById('cartoon');
+
+            var draw = function() {
+                requestAnimationFrame(draw);
+                ctx.clearRect(0, 0, 300, 233);
+                ctx.drawImage(video, 0, 0, 300, 233);
+            }
+
+            requestAnimationFrame(draw);
+
+        </script>
+
+    </body>
+</html>

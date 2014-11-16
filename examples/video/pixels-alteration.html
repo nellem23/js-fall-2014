@@ -1,0 +1,61 @@
+<html>
+    <style>
+
+        video, canvas {
+            float: left;
+        }
+
+        canvas {
+            border: 1px solid black;
+        }
+
+        #container {
+            margin: 0 auto;
+            width: 620px;
+        }
+
+    </style>
+    <body>
+
+       <div id="container">
+           <video id="cartoon" src="cartoon.mp4" width=300 controls loop></video>
+           <canvas id="cartoon-canvas" width=300 height=233></canvas>
+           <canvas id="altered-canvas" width=300 height=233></canvas>
+       </div>
+
+        <script>
+
+            var ctx = document.getElementById('cartoon-canvas').getContext('2d');
+            var actx = document.getElementById('altered-canvas').getContext('2d');
+            var video = document.getElementById('cartoon');
+            var frame, l;
+
+            var draw = function() {
+                requestAnimationFrame(draw);
+                ctx.clearRect(0, 0, 300, 233);
+                ctx.drawImage(video, 0, 0, 300, 233);
+
+                frame = ctx.getImageData(0, 0, 300, 233);
+                l = frame.data.length / 4;
+
+                for (var i = 0; i < l; i++) {
+                    var r = frame.data[i * 4 + 0];
+                    var g = frame.data[i * 4 + 1];
+                    var b = frame.data[i * 4 + 2];
+
+                    if (r < 220 && b < 220 && g < 220) {
+                        frame.data[i * 4 + 0] = 255;
+                        frame.data[i * 4 + 1] = 0;
+                        frame.data[i * 4 + 2] = 0;
+                        actx.putImageData(frame, 0, 0);
+                    }
+
+                }
+            }
+
+            requestAnimationFrame(draw);
+
+        </script>
+
+    </body>
+</html>
