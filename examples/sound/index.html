@@ -1,0 +1,38 @@
+<html>
+    <body>
+
+        <p>A Audio Element with built in controls</p>
+        <audio id="a-note" src="a.mp3" controls ></audio>
+
+        <p>An audio element with custom controls (Its invisible)</p>
+
+        <audio id="d-note" src="d.mp3"></audio>
+        <audio id="g-note" src="g.mp3"></audio>
+        <audio id="e-note" src="e.mp3"></audio>
+
+        <button rel="a-note" class="play-note">Play A</button>
+        <button rel="d-note" class="play-note">Play D</button>
+        <button rel="g-note" class="play-note">Play G</button>
+        <button rel="e-note" class="play-note">Play E</button>
+
+        <script>
+
+            var playAudio = function(e) {
+               var rel = e.currentTarget.getAttribute('rel');
+               console.log(rel);
+               var audio = document.getElementById(rel);
+               // Set time to beginning so we don't have to 
+               // wait for the sound to finish if its playing.
+               audio.currentTime = 0;
+               audio.play();
+            }
+
+            var btns = document.querySelectorAll('.play-note');
+            for (var i = 0; i < btns.length; i++) {
+                btns[i].addEventListener('click', playAudio);
+            }
+
+        </script>
+
+    </body>
+</html>

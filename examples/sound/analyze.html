@@ -1,0 +1,92 @@
+<html>
+    <style>
+        #container {
+            margin: 0 auto;
+            width: 400px;
+            text-align: center;
+        }
+
+        #vis {
+            margin: 20px 0;
+            background: #333;
+        }
+    </style>
+    <body>
+
+        <div id="container">
+            <canvas id="vis" width=400 height=200></canvas>
+            <audio id="spring" src="ymbis.mp3" controls></audio>
+        </div>
+        <script>
+
+            var audio = document.getElementById('spring');
+            var running = false;
+
+            var ctx = new AudioContext();
+            var vctx = document.getElementById('vis').getContext('2d');
+
+            var audioSrc = ctx.createMediaElementSource(audio);
+            var analyser = ctx.createAnalyser();
+            // we have to connect the MediaElementSource with the analyser 
+            audioSrc.connect(analyser);
+            // we could configure the analyser: e.g. analyser.fftSize (for further infos read the spec)
+           
+            // frequencyBinCount tells you how many values you'll receive from the analyser
+            var frequencyData = new Uint8Array(analyser.frequencyBinCount);
+           
+            // we're ready to receive some data!
+            // loop
+            function renderFrame() {
+
+               if (running) {
+                   requestAnimationFrame(renderFrame);
+               }
+
+               analyser.getByteTimeDomainData(frequencyData);
+               draw(frequencyData, vctx);
+
+               console.log(frequencyData)
+            }
+
+            function draw(data, vctx) {
+
+                vctx.clearRect(0, 0, 400, 200);
+                var step = 400 / data.length; // width of canvas divided by number of things in array
+                var baseline = 100; // Height of canvas divided by 2;
+
+                vctx.strokeStyle = '#fff';
+                vctx.beginPath();
+
+                var x = 0;
+
+                for (var i = 0; i < data.length; i++) {
+
+                    var y = 200 - ((data[i]) / 2); // values are between 0 - 255. Divide to get a smaller size
+
+                    if (i === 0) {
+                        vctx.moveTo(x,y);
+                    } else {
+                        vctx.lineTo(x,y);
+                    }
+
+                    x += step;
+
+                }
+
+                vctx.stroke();
+
+            }
+
+            audio.addEventListener('play', function() {
+              running = true;
+              renderFrame();
+            });
+
+            audio.addEventListener('pause', function() {
+              running = false;
+            });
+
+        </script>
+
+    </body>
+</html>

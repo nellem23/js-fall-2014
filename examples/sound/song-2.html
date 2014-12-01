@@ -1,0 +1,47 @@
+<html>
+    <body>
+
+        <audio id="a-note" src="a.mp3"></audio>
+        <audio id="d-note" src="d.mp3"></audio>
+        <audio id="g-note" src="g.mp3"></audio>
+        <audio id="e-note" src="e.mp3"></audio>
+
+        <button id="start-song">Play Song</button>
+
+        <script>
+
+            var song = [
+                {note: 'a', time: 250 },
+                {note: 'a', time: 250 },
+                {note: 'd', time: 500 },
+                {note: 'a', time: 250 },
+                {note: 'e', time: 250 },
+                {note: 'a', time: 250 },
+                {note: 'a', time: 250 },
+                {note: 'd', time: 500 },
+                {note: 'g', time: 250 },
+            ];
+
+            var playNote = function(note) {
+               var audio = document.getElementById(note + '-note');
+               audio.currentTime = 0;
+               audio.play();
+            }
+
+            var playSong = function() {
+                var noteData = song.shift();
+                if (!noteData) {
+                    // Bail out, no notes left!!
+                    return;
+                }
+                playNote(noteData.note);
+                setTimeout(playSong, noteData.time);
+            }
+
+            var btn = document.getElementById('start-song');
+            btn.addEventListener('click', playSong);
+
+        </script>
+
+    </body>
+</html>

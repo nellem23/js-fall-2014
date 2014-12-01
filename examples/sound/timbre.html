@@ -1,0 +1,39 @@
+<html>
+    <style>
+        #control-pad {
+            margin: 50px auto;
+            background-color: #dee;
+            width: 400px;
+            height: 200px;
+        }
+    </style>
+    <body>
+
+        <div id="control-pad"></div>
+
+        <script src="timbre.js"></script>
+        <script>
+
+            var cp = document.getElementById('control-pad');
+
+            var sin = T("sin");
+
+            var mapRange = function(value, fromStart, fromEnd, toStart, toEnd) {
+                return toStart + (value / (fromEnd - fromStart)) * (toEnd - toStart);
+            }
+
+            cp.addEventListener('mouseenter', function() {
+                sin.play();
+            })
+
+            cp.addEventListener('mouseleave', function() {
+                sin.pause();
+            })
+
+            cp.addEventListener('mousemove', function(e) {
+                sin.set({freq: mapRange(e.offsetX, 0, 400, 300, 1200)});
+            })
+
+        </script>
+    </body>
+</html>
