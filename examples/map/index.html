@@ -1,0 +1,143 @@
+<style>
+    #map {
+        width: 500px;
+        height: 400px;
+        margin: 0 auto;
+    }
+
+    #form {
+        display: none;
+    }
+</style>
+<!-- Make a div on your page that will hold your map. You can position it with your own css/markup -->
+<div id="map"></div>
+<button id="form-toggle">Remember Place</button>
+<button id="find">Find Nearby</button>
+
+<form id="form">
+    <label>Title</label><input name="title" /><br />
+    <label>description</label><input name="description" /><br />
+    <input type="submit" />
+</form>
+
+<!-- Include the map box js and css -->
+<script src='https://api.tiles.mapbox.com/mapbox.js/v2.1.4/mapbox.js'></script>
+<script src='parse-1.3.0.min.js'></script>
+<script src='jquery-2.1.1.min.js'></script>
+<link href='https://api.tiles.mapbox.com/mapbox.js/v2.1.4/mapbox.css' rel='stylesheet' />
+<script>
+    
+    // When mapbox has loaded, the variable L holds objects and methods you can use to 
+    // create and manipulate maps.
+
+    // The first thing you need to do is give mapbox your api token. You can find this in your account pages.
+    L.mapbox.accessToken = 'pk.eyJ1IjoianVzdGluZG9uYXRvIiwiYSI6IlMwOElxZ00ifQ.OFHYT5Nx2q1wxG8TzGfBEw';
+    var map = L.mapbox.map('map', 'justindonato.kbmji7e3');
+
+    // Initialize Parse and make a class to store your data.
+    Parse.initialize("PjoMlkEvXa7IV8KSKAt2vlXEbEqFxybMebnGuVxY", "qsKi2q8UFemxqpBYm9VV1R8GmWAQXhO9CaHmJZ6Q");
+    var LocationMemory = Parse.Object.extend("LocationMemory");
+
+    // Define functions to do our work for us.
+
+    function plotMemory(memory) { 
+
+        var loc = memory.get('loc');
+        console.log(loc);
+
+        L.mapbox.featureLayer({
+            type: 'Feature',
+            geometry: {
+                type: 'Point',
+                coordinates: [loc.longitude, loc.latitude]
+            },
+            properties: {
+                'marker-size': 'large',
+                'marker-color': '#BE9A6B',
+                'title': memory.get('title'),
+                'description': memory.get('description'),
+            }
+        }).addTo(map);
+
+    }
+
+    function addMarkerToMapCenter() { 
+        L.mapbox.featureLayer({
+            type: 'Feature',
+            geometry: {
+                type: 'Point',
+                coordinates: [map.getCenter().lng, map.getCenter().lat]
+            },
+            properties: {
+                'marker-size': 'large',
+                'marker-color': '#BE9A6B',
+            }
+        }).addTo(map);
+    }
+
+    function showForm(e) {
+        form.show()
+        addMarkerToMapCenter();
+    }
+
+    function showMemories(memories) {
+        for (var i = 0; i < memories.length; i++) {
+            plotMemory(memories[i]);
+        }
+    }
+
+    function findMemories() {
+        // You can find Parse objects that have a Geopoint on them by defining the South West and North East
+        // corners of a box you want to search within.
+        var mapBoundary = map.getBounds();
+
+        var southWest = mapBoundary._southWest;
+        var northEast = mapBoundary._northEast;
+
+        // Create Parse geo points from the map boundaries.
+        var swGp = new Parse.GeoPoint({latitude: southWest.lat, longitude: southWest.lng});
+        var neGp = new Parse.GeoPoint({latitude: northEast.lat, longitude: northEast.lng});
+
+        var query = new Parse.Query(LocationMemory);
+        // First param is the property of your Class that holds the Geopointo
+        query.withinGeoBox('loc', swGp, neGp);
+        query.find({success: showMemories});
+    }
+
+    function submitForm(e) {
+        e.preventDefault();
+
+        var center = map.getCenter();
+
+        // Find the form fields we care about;
+        var titleField = form.find('[name="title"]');
+        var descriptionField = form.find('[name="description"]');
+
+        // Create a new parse object with the data from the form and the location from the map.
+        var lm = new LocationMemory({
+            title: titleField.val(),
+            description: descriptionField.val(),
+            loc: new Parse.GeoPoint({latitude: center.lat, longitude: center.lng})
+        });
+
+        // Save the memory
+        lm.save();
+
+        // Clear the inputs
+        titleField.val('');
+        descriptionField.val('');
+
+        // Hide the form
+        form.hide();
+    }
+
+    // Program really starts here.
+
+    var form = $('#form');
+
+    $('#form-toggle').on('click', showForm);
+    $('#find').on('click', findMemories);
+
+    form.on('submit', submitForm);
+
+</script>
